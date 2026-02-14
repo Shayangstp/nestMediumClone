@@ -4,7 +4,7 @@ import { TagsEntity } from './tags.entity';
 
 //define all our API's for api view but if too long we do it from service
 
-//no buisines or logic in here also database all in sevice
+//no business or logic in here also database all in sevice
 
 @Controller('tags') // all controllers retrun tags URL prefix
 export class TagsController {
@@ -18,10 +18,7 @@ export class TagsController {
 
   // formated version
   async findAll(): Promise<{ tags: string[] }> {
-    const tags = this.tagService.findAll();
-
-    return {
-      tags: (await tags).map((tag) => tag.name),
-    };
+    const tags = await this.tagService.findAll();
+    return { tags: tags.map((tag) => tag.name) };
   }
 }

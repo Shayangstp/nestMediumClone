@@ -15,7 +15,7 @@ import { TagModule } from './tag/tags.module';
       password: 'Shayan5262',
       database: 'mediumclone',
       autoLoadEntities: true,
-      synchronize: true,  
+      synchronize: false, // use migration instead
     }),
 
     TagModule,

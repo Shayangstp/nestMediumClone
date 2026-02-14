@@ -11,13 +11,17 @@ export const AppDataSource = new DataSource({
   type: 'postgres',
   host: process.env.DB_HOST ?? '127.0.0.1',
   port: Number(process.env.DB_PORT ?? 5432),
-  username: process.env.DB_USER,
-  password: process.env.DB_PASS,
+  // username: process.env.DB_USER,
+  username: 'wolfi',
+  // password: process.env.DB_PASS,
+  password: 'Shayan5262',
   database: process.env.DB_NAME,
 
   entities: [path.join(__dirname, '/../**/*.entity{.ts,.js}')],
   migrations: [path.join(__dirname, '/../migrations/*{.ts,.js}')],
 
-  synchronize: toBool(process.env.DB_SYNC), // dev only
+  // synchronize: toBool(process.env.DB_SYNC), // dev only
+  synchronize: false, // dev only
+
   ssl: toBool(process.env.DB_SSL) ? { rejectUnauthorized: false } : false,
 });
