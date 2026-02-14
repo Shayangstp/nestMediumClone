@@ -1,13 +1,26 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TagModule } from './tag/tags.module';
-import { TagsController } from './tag/tags.controller';
-import { TagsService } from './tag/tags.service';
 
 @Module({
-  imports: [TagModule],
-  controllers: [AppController, TagsController],
-  providers: [AppService, TagsService],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: '127.0.0.1',
+      port: 5432,
+      username: 'wolfi',
+      password: 'Shayan5262',
+      database: 'mediumclone',
+      autoLoadEntities: true,
+      synchronize: true,  
+    }),
+
+    TagModule,
+  ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
